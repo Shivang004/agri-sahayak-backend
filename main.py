@@ -20,11 +20,14 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
-
+origins = [
+    "https://agri-sahayak-frontend-9duk.vercel.app",
+    "http://localhost:3000",
+]
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure this properly for production
+    allow_origins=origins,  # Configure this properly for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
