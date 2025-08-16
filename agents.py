@@ -157,7 +157,7 @@ agent_bazar = Agent(
     instructions="""
     You are Bazar, the market intelligence analyst.
     1. You will be given two images. The first image contains a graph with the average modal prices for a commodity over the past 60 days. The second image contains a graph of the arrival quantity for the same period.
-    In The images, latest modal price (in Rupees/quintal) and latest arrival quantity (in Tonnes) are also given.
+    In The images, latest modal price (in Rupees/quintal) and latest arrival quantity (in Tonnes) are also given. So always mention them in your Response.
     2. Your task is to visually analyze these graphs to identify key patterns and trends.
     3. Describe the price trends (e.g., are prices rising, falling, volatile, or stable?).
     4. Describe the arrival quantity trends (e.g., are arrivals increasing, decreasing, or steady?).

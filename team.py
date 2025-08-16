@@ -41,8 +41,9 @@ def get_price_plot_base64(
         from_date=from_date,
         to_date=to_date,
     )
+    # print(price_request.state_id, price_request.district_id)
     price_data = get_prices(price_request)
-
+    # print(price_request.to_dict())
     if not price_data:
         print("No price data found for the given filters.")
         return None
