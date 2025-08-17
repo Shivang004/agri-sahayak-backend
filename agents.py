@@ -46,6 +46,8 @@ sarpanch_agent = Agent(
     - If location context is provided (e.g., "Location: UP, India"), always include it in the enhanced query if required.
     - If the query lacks agriculture context, add relevant terms like "agriculture sector", "farming", "agricultural", etc.
     - If you thibk the query's response is not effected by location context, then don't include it in the enhanced query.
+    - If the location is given in User Query, then DON'T modify the location context in enhanced query.
+
     Example 1:
     User Query: "गेहूं के लिए अगले हफ्ते का मौसम पूर्वानुमान क्या है?" | Location: UP, India
     Your JSON Output:
