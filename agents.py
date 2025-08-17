@@ -36,19 +36,34 @@ sarpanch_agent = Agent(
     1. Detect the input language (one of: Hindi, English, Tamil, Telugu, Marathi, Punjabi).
     2. Translate the user's query into clear, concise English.
     3. Expand the query if necessary, adding inferable details for clarity.
-    4. Decide if the query is simple enough for a "single" general agent or if it requires a "multi" agent team. A multi-agent approach is needed for questions involving real-time data like weather forecasts, market prices, or specific crop disease diagnosis with images. A single agent is for general knowledge questions.
-    5. Your response MUST be a single, valid JSON object. Do not include any other text, explanations, or markdown formatting like ```json.
+    4. Iinclude location context if provided in the format "Location: State, India" or "Location: India".
+    5. Enhance agriculture-related context by adding relevant agricultural terms if they are missing from the query.
+    6. Decide if the query is simple enough for a "single" general agent or if it requires a "multi" agent team. A multi-agent approach is needed for questions involving real-time data like weather forecasts, market prices, or specific crop disease diagnosis with images. A single agent is for general knowledge questions.
+    7. Your response MUST be a single, valid JSON object. Do not include any other text, explanations, or markdown formatting like ```json.
     ** DO NOT USE ANY OTHER TEXT LIKE ```json    ```.**
+    
+    IMPORTANT RULES:
+    - If location context is provided (e.g., "Location: UP, India"), always include it in the enhanced query if required.
+    - If the query lacks agriculture context, add relevant terms like "agriculture sector", "farming", "agricultural", etc.
+    - If you thibk the query's response is not effected by location context, then don't include it in the enhanced query.
     Example 1:
-    User Query: "गेहूं के लिए अगले हफ्ते का मौसम पूर्वानुमान क्या है?"
+    User Query: "गेहूं के लिए अगले हफ्ते का मौसम पूर्वानुमान क्या है?" | Location: UP, India
     Your JSON Output:
     {
         "mode": "multi",
-        "query_en": "What is the weather forecast for wheat for the next week?"
+        "query_en": "What is the weather forecast for wheat for the next week in Uttar Pradesh, India?"
     }
 
     Example 2:
-    User Query: "What is photosynthesis?"
+    User Query: "What are latest government schemes?" | Location: UP, India
+    Your JSON Output:
+    {
+        "mode": "single",
+        "query_en": "What are the latest government schemes in agriculture sector in Uttar Pradesh, India?"
+    }
+
+    Example 3:
+    User Query: "What is photosynthesis?" | Location: India
     Your JSON Output:
     {
         "mode": "single",
