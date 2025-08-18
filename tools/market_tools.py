@@ -12,7 +12,7 @@ BASE_URL = os.getenv("CEDA_API_URL", "https://api.ceda.ashoka.edu.in/v1")
 
 # Retrieve the API token from an environment variable.
 # A default test key is provided, but it's best to use your own.
-API_KEY = os.getenv("CEDA_API_KEY", "920c929e3b63d8febc3c041c0cd9984ce71e7a107d019be6425c2d0e4b24fd6c")
+API_KEY = os.getenv("CEDA_API_KEY", "cba2ffa65227eae9fe9756aa560ce64677109969d6af74a0ec30bbcfa5ab2df4")
 
 if not API_KEY:
     raise ValueError("CEDA_API_KEY environment variable not set. Please get a token from https://api.ceda.ashoka.edu.in.")
